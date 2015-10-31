@@ -1,0 +1,9 @@
+@import "colors";
+@import "fonts";
+
+.resource-block-item {
+  display: inline-block;
+  width: 100%;
+  background: $green-500;
+  border-bottom: 2px solid $green-400;
+}
