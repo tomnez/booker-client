@@ -23,6 +23,10 @@ module.exports = function(defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
   app.import("bower_components/normalize.css/normalize.css");
+  app.import("vendor/fonts/icomoon.eot");
+  app.import("vendor/fonts/icomoon.svg");
+  app.import("vendor/fonts/icomoon.ttf");
+  app.import("vendor/fonts/icomoon.woff");
 
   return app.toTree();
 };

@@ -1,9 +1,31 @@
 @import "colors";
 @import "fonts";
 
+$resource-block-padding: 15px 30px;
+
 .resource-block-item {
   display: inline-block;
+  position: relative;
   width: 100%;
+  background: $green-400;
+  border-bottom: 1px solid $green-300;
+}
+.resource-label-container {
   background: $green-500;
-  border-bottom: 2px solid $green-400;
+  padding: $resource-block-padding;
+}
+.resource-details-container {
+  display: none;
+  padding: $resource-block-padding;
+}
+.resource-basic-info-container {
+  padding: $resource-block-padding;
+}
+.resource-icon-details {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  padding: 15px;
+  background: $green-400;
+  border-radius: 100%;
 }
