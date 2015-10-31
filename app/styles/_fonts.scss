@@ -1,0 +1,26 @@
+@import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700italic,700,400italic);
+
+// use:
+// @include droid-serif(700);
+@mixin droid-serif($weight) {
+  font-family: 'Droid Serif', sans-serif;
+  font-weight: $weight;
+}
+
+@mixin droid-serif-italic($weight) {
+  font-family: 'Droid Serif', sans-serif;
+  font-weight: $weight;
+  font-style: italic;
+}
+
+// use:
+// @include font-size(14px);
+@mixin font-size($size) {
+  font-size: $size;
+  font-size: calculateRem($size);
+}
+
+@function calculateRem($size) {
+  $remSize: $size / 10px;
+  @return $remSize * 1rem;
+}
