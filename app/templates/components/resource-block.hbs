@@ -1,4 +1,4 @@
-<li class="resource-block-item">
+<li class="resource-block-item {{if isBooked 'is-booked'}}">
 
   {{!-- swipe to see this part --}}
   <div class="minute-counter-container" style="display: none;">
@@ -22,7 +22,9 @@
       <h1>Room 1</h1>
     </div>
     <div class="resource-details-container">
-      <p>details!</p>
+      <h2 class="resource-details-header">NEXT MEETING:</h2>
+      <p class="resource-details-booked-by">Booked by <strong>Tom Netzband</strong> for <strong>Design Review</strong> from <strong>2:00pm - 3:30pm</strong>.</p>
+      <span class="resource-details-and-then">Then 4:30pm - 4:45pm by Andrew Cox</span>
     </div>
     <div class="resource-basic-info-container">
       <span class="until-time">Booked until 4:30pm</span>
