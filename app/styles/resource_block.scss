@@ -7,14 +7,17 @@ $resource-block-padding: 15px 30px;
   display: inline-block;
   position: relative;
   width: 100%;
-  background: $green-400;
-  border-bottom: 1px solid $green-300;
+  background: $aqua-base;
+
+  &.is-booked {
+    background: $red-base;
+  }
 }
-//==============================================================
-//   TITLE BAR
-//==============================================================
+//============================================
+//   ROOM TITLE & ICONS
+//============================================
 .resource-label-container {
-  background: $green-500;
+  @include droid-sans(700);
   padding: $resource-block-padding;
 }
 .resource-icon-details {
@@ -22,14 +25,18 @@ $resource-block-padding: 15px 30px;
   right: 30px;
   top: 15px;
   padding: 15px;
-  background: $green-400;
+  background: $aqua-faded;
   border-radius: 100%;
+
+  .is-booked & {
+    background: $red-faded;
+  }
 }
 
 // add this class to other icons
 // to transform them into spinners.
 .icon-loading {
-  animation: ROTATE 0.8s linear infinite;
+  animation: ROTATE 0.75s linear infinite;
 
   &:before {
     content: "\e906" !important;
@@ -45,18 +52,46 @@ $resource-block-padding: 15px 30px;
   }
 }
 
-//==============================================================
-//   DETAILS
-//==============================================================
+//============================================
+//   DETAILS FLYOUT PANEL
+//============================================
 .resource-details-container {
-  // display: none;
   padding: $resource-block-padding;
+  background: $aqua-dark;
+
+  .is-booked & {
+    background: $red-dark;
+  }
+}
+.resource-details-header {
+  @include droid-sans(400);
+  @include font-size(12px);
+}
+.resource-details-booked-by {
+  @include font-size(12px);
+  line-height: 1.8rem;
+}
+.resource-details-and-then {
+  @include font-size(10px);
 }
 
-//==============================================================
-//   INFO
-//==============================================================
+//============================================
+//   BOOKED-UNTIL
+//============================================
 .resource-basic-info-container {
   padding: $resource-block-padding;
+  background: $aqua-faded;
+
+  .is-booked & {
+    background: $red-faded;
+  }
+
+  .until-time {
+    @include droid-serif-italic(400);
+  }
+  .minute-counter {
+    @include font-size(10px);
+    @include droid-serif-italic(400);
+  }
 }
 
