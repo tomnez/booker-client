@@ -10,15 +10,11 @@ $resource-block-padding: 15px 30px;
   background: $green-400;
   border-bottom: 1px solid $green-300;
 }
+//==============================================================
+//   TITLE BAR
+//==============================================================
 .resource-label-container {
   background: $green-500;
-  padding: $resource-block-padding;
-}
-.resource-details-container {
-  display: none;
-  padding: $resource-block-padding;
-}
-.resource-basic-info-container {
   padding: $resource-block-padding;
 }
 .resource-icon-details {
@@ -29,3 +25,38 @@ $resource-block-padding: 15px 30px;
   background: $green-400;
   border-radius: 100%;
 }
+
+// add this class to other icons
+// to transform them into spinners.
+.icon-loading {
+  animation: ROTATE 0.8s linear infinite;
+
+  &:before {
+    content: "\e906" !important;
+  }
+}
+
+@keyframes ROTATE {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+//==============================================================
+//   DETAILS
+//==============================================================
+.resource-details-container {
+  // display: none;
+  padding: $resource-block-padding;
+}
+
+//==============================================================
+//   INFO
+//==============================================================
+.resource-basic-info-container {
+  padding: $resource-block-padding;
+}
+
