@@ -14,7 +14,7 @@ $resource-block-padding: 15px 30px;
   }
 }
 //============================================
-//   ROOM TITLE & ICONS
+//   ROOM NAME & ICONS
 //============================================
 .resource-label-container {
   @include droid-sans(700);
@@ -95,3 +95,72 @@ $resource-block-padding: 15px 30px;
   }
 }
 
+//============================================
+//   MINUTE COUNTER
+//============================================
+.resource-minute-counter {
+  background: $aqua-dark;
+
+  .is-booked & {
+    background: $red-dark;
+  }
+  .buttons-row {
+    display: flex;
+    padding: $resource-block-padding;
+
+    .counter-btn-container {
+      flex: 1;
+      text-align: center;
+    }
+    .counter-btn {
+      margin-top: 0.5rem;
+      width: 3rem;
+      height: 3rem;
+      background: $aqua-faded;
+      border-radius: 100%;
+      border: none;
+
+      &.disabled {
+        opacity: 0.4;
+      }
+    }
+    .current-minutes-display {
+      @include droid-sans(700);
+      @include font-size(18px);
+      display: inline-block;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 100%;
+      background: $aqua-base;
+    }
+    .large-minutes-display {
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  }
+  .message-row {
+    @include font-size(10px);
+    @include droid-sans(400);
+    padding: $resource-block-padding;
+    background: $aqua-faded;
+    text-align: center;
+
+    .is-booked & {
+      background: $red-faded;
+    }
+  }
+}
+
+//============================================
+//   CANCEL
+//============================================
+.resource-cancel {
+  text-align: center;
+}
+.resource-cancel-button {
+  @include droid-sans(700);
+  padding: 10px;
+  margin: 30px;
+  background: $red-faded;
+  border: none;
+}
