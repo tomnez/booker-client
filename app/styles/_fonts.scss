@@ -1,16 +1,22 @@
 @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700italic,700,400italic);
+@import url(https://fonts.googleapis.com/css?family=Droid+Sans:400,700);
 
 // use:
 // @include droid-serif(700);
 @mixin droid-serif($weight) {
-  font-family: 'Droid Serif', sans-serif;
+  font-family: 'Droid Serif', serif;
   font-weight: $weight;
 }
 
 @mixin droid-serif-italic($weight) {
-  font-family: 'Droid Serif', sans-serif;
+  font-family: 'Droid Serif', serif;
   font-weight: $weight;
   font-style: italic;
+}
+
+@mixin droid-sans($weight) {
+  font-family: 'Droid Sans', sans-serif;
+  font-weight: $weight;
 }
 
 // use:
