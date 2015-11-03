@@ -1,0 +1,180 @@
+@import "colors";
+@import "fonts";
+
+$resource-block-padding: 15px 30px;
+
+.resource-block-item {
+  display: flex;
+  width: 200%;
+  background: $aqua-base;
+  transform: translateX(-50%);
+  transition: transform 0.2s ease-out;
+
+  &.is-booked {
+    background: $red-base;
+  }
+  .resource-info-all-container {
+    position: relative;
+    flex: 1;
+  }
+  .resource-minute-counter {
+    position: relative;
+    flex: 1;
+  }
+}
+//============================================
+//   ROOM NAME & ICONS
+//============================================
+.resource-label-container {
+  @include droid-sans(700);
+  padding: $resource-block-padding;
+}
+.resource-icon-details {
+  position: absolute;
+  right: 30px;
+  top: 15px;
+  padding: 15px;
+  background: $aqua-faded;
+  border-radius: 100%;
+
+  .is-booked & {
+    background: $red-faded;
+  }
+}
+
+// add this class to other icons
+// to transform them into spinners.
+.icon-loading {
+  animation: ROTATE 0.75s linear infinite;
+
+  &:before {
+    content: "\e906" !important;
+  }
+}
+
+@keyframes ROTATE {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+
+//============================================
+//   DETAILS FLYOUT PANEL
+//============================================
+.resource-details-container {
+  padding: $resource-block-padding;
+  background: $aqua-dark;
+  display: none;
+
+  .is-booked & {
+    background: $red-dark;
+  }
+}
+.resource-details-header {
+  @include droid-sans(400);
+  @include font-size(12px);
+}
+.resource-details-booked-by {
+  @include font-size(12px);
+  line-height: 1.8rem;
+}
+.resource-details-and-then {
+  @include font-size(10px);
+}
+
+//============================================
+//   BOOKED-UNTIL
+//============================================
+.resource-basic-info-container {
+  padding: $resource-block-padding;
+  background: $aqua-faded;
+
+  .is-booked & {
+    background: $red-faded;
+  }
+
+  .until-time {
+    @include droid-serif-italic(400);
+  }
+  .minute-counter {
+    @include font-size(10px);
+    @include droid-serif-italic(400);
+  }
+}
+
+//============================================
+//   MINUTE COUNTER
+//============================================
+.resource-minute-counter {
+  background: $aqua-dark;
+
+  .is-booked & {
+    background: $red-dark;
+  }
+  .buttons-row {
+    display: flex;
+    padding: $resource-block-padding;
+    margin-bottom: 1rem;
+
+    .counter-btn-container {
+      flex: 1;
+      text-align: center;
+    }
+    .counter-btn {
+      margin-top: 0.5rem;
+      width: 3rem;
+      height: 3rem;
+      background: $aqua-faded;
+      border-radius: 100%;
+      border: none;
+
+      &.disabled {
+        opacity: 0.4;
+      }
+    }
+    .current-minutes-display {
+      @include droid-sans(700);
+      @include font-size(18px);
+      display: inline-block;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 100%;
+      background: $aqua-base;
+    }
+    .large-minutes-display {
+      display: inline-block;
+      margin-top: 1rem;
+    }
+  }
+  .message-row {
+    @include font-size(10px);
+    @include droid-sans(400);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 15px 0;
+    background: $aqua-faded;
+    text-align: center;
+
+    .is-booked & {
+      background: $red-faded;
+    }
+  }
+}
+
+//============================================
+//   CANCEL
+//============================================
+.resource-cancel {
+  text-align: center;
+}
+.resource-cancel-button {
+  @include droid-sans(700);
+  padding: 10px;
+  margin: 21px;
+  background: $red-faded;
+  border: none;
+}
