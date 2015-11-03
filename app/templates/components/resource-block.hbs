@@ -1,44 +1,39 @@
-<li class="resource-block-item {{if isBooked 'is-booked'}}">
+<div class="resource-minute-counter">
+  {{#unless isBooked}}
+    <div class="buttons-row">
+      <span class="counter-btn-container">
+        <button class="counter-btn btn-less-minutes icon-minus disabled"></button>
+      </span>
+      <span class="counter-btn-container">
+        <div class="current-minutes-display"><span class="large-minutes-display">5</span></div>
+      </span>
+      <span class="counter-btn-container">
+        <button class="counter-btn btn-more-minutes icon-plus"></button>
+      </span>
+    </div>
+    <div class="message-row">tap center circle to book for <span class="minutes-to-book">5</span> minutes.</div>
+  {{else}}
+    <div class="resource-cancel">
+      <button class="resource-cancel-button">Cancel Event</button>
+      <div class="message-row">You must be the owner to cancel (duh)</div>
+    </div>
+  {{/unless}}
+</div>
 
-  {{!-- swipe to see this part --}}
-  <div class="resource-minute-counter" style="display: none;">
-    {{#unless inUse}}
-      <div class="buttons-row">
-        <span class="counter-btn-container">
-          <button class="counter-btn btn-less-minutes icon-minus disabled"></button>
-        </span>
-        <span class="counter-btn-container">
-          <div class="current-minutes-display"><span class="large-minutes-display">5</span></div>
-        </span>
-        <span class="counter-btn-container">
-          <button class="counter-btn btn-more-minutes icon-plus"></button>
-        </span>
-      </div>
-      <div class="message-row">tap center circle to book for <span class="minutes-to-book">5</span> minutes.</div>
-    {{else}}
-      <div class="resource-cancel">
-        <button class="resource-cancel-button">Cancel Event</button>
-        <div class="message-row">You must be the owner to cancel (duh)</div>
-      </div>
-    {{/unless}}
+<div class="resource-info-all-container">
+  <span class="icon-list2 resource-icon-details"></span>
+  <div class="resource-label-container">
+    <h1>Room 1</h1>
   </div>
-
-  <div class="resource-info-all-container">
-    <span class="icon-list2 resource-icon-details"></span>
-    <div class="resource-label-container">
-      <h1>Room 1</h1>
-    </div>
-    <div class="resource-details-container">
-      <h2 class="resource-details-header">NEXT EVENT:</h2>
-      <p class="resource-details-booked-by">
-        Booked by <strong>Tom Netzband</strong> for <strong>Design Review</strong> from <strong>2:00pm - 3:30pm</strong>.
-      </p>
-      <span class="resource-details-and-then">Then 4:30pm - 4:45pm by Andrew Cox</span>
-    </div>
-    <div class="resource-basic-info-container">
-      <span class="until-time">Booked until 4:30pm</span>
-      <span class="minute-counter">(23 minutes)</span>
-    </div>
+  <div class="resource-details-container">
+    <h2 class="resource-details-header">NEXT EVENT:</h2>
+    <p class="resource-details-booked-by">
+      Booked by <strong>Tom Netzband</strong> for <strong>Design Review</strong> from <strong>2:00pm - 3:30pm</strong>.
+    </p>
+    <span class="resource-details-and-then">Then 4:30pm - 4:45pm by Andrew Cox</span>
   </div>
-
-</li>
+  <div class="resource-basic-info-container">
+    <span class="until-time">Booked until 4:30pm</span>
+    <span class="minute-counter">(23 minutes)</span>
+  </div>
+</div>
