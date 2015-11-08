@@ -1,5 +1,5 @@
-@import "colors";
-@import "fonts";
+@import 'colors';
+@import 'fonts';
 
 $resource-block-padding: 15px 30px;
 
@@ -13,10 +13,12 @@ $resource-block-padding: 15px 30px;
   &.is-booked {
     background: $red-base;
   }
+
   .resource-info-all-container {
     position: relative;
     flex: 1;
   }
+
   .resource-minute-counter {
     position: relative;
     flex: 1;
@@ -29,6 +31,7 @@ $resource-block-padding: 15px 30px;
   @include droid-sans(700);
   padding: $resource-block-padding;
 }
+
 .resource-icon-details {
   position: absolute;
   right: 30px;
@@ -48,7 +51,7 @@ $resource-block-padding: 15px 30px;
   animation: ROTATE 0.75s linear infinite;
 
   &:before {
-    content: "\e906" !important;
+    content: '\e906' !important;
   }
 }
 
@@ -56,6 +59,7 @@ $resource-block-padding: 15px 30px;
   0% {
     transform: rotate(0deg);
   }
+  
   100% {
     transform: rotate(359deg);
   }
@@ -73,14 +77,17 @@ $resource-block-padding: 15px 30px;
     background: $red-dark;
   }
 }
+
 .resource-details-header {
   @include droid-sans(400);
   @include font-size(12px);
 }
+
 .resource-details-booked-by {
   @include font-size(12px);
   line-height: 1.8rem;
 }
+
 .resource-details-and-then {
   @include font-size(10px);
 }
@@ -99,6 +106,7 @@ $resource-block-padding: 15px 30px;
   .until-time {
     @include droid-serif-italic(400);
   }
+
   .minute-counter {
     @include font-size(10px);
     @include droid-serif-italic(400);
@@ -114,6 +122,7 @@ $resource-block-padding: 15px 30px;
   .is-booked & {
     background: $red-dark;
   }
+
   .buttons-row {
     display: flex;
     padding: $resource-block-padding;
@@ -123,18 +132,20 @@ $resource-block-padding: 15px 30px;
       flex: 1;
       text-align: center;
     }
+
     .counter-btn {
       margin-top: 0.5rem;
       width: 3rem;
       height: 3rem;
       background: $aqua-faded;
       border-radius: 100%;
-      border: none;
+      border: 0;
 
       &.disabled {
         opacity: 0.4;
       }
     }
+
     .current-minutes-display {
       @include droid-sans(700);
       @include font-size(18px);
@@ -144,11 +155,13 @@ $resource-block-padding: 15px 30px;
       border-radius: 100%;
       background: $aqua-base;
     }
+
     .large-minutes-display {
       display: inline-block;
       margin-top: 1rem;
     }
   }
+
   .message-row {
     @include font-size(10px);
     @include droid-sans(400);
@@ -171,10 +184,11 @@ $resource-block-padding: 15px 30px;
 .resource-cancel {
   text-align: center;
 }
+
 .resource-cancel-button {
   @include droid-sans(700);
   padding: 10px;
   margin: 21px;
   background: $red-faded;
-  border: none;
+  border: 0;
 }

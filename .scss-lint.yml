@@ -1,0 +1,55 @@
+linters:
+  ColorVariable:
+    enabled: false
+
+  VendorPrefix:
+    enabled: false
+
+  QualifyingElement:
+    enabled: false
+
+  IdSelector:
+    enabled: false
+
+  NestingDepth:
+    enabled: true
+    max_depth: 4
+
+  DeclarationOrder:
+    enabled: true
+
+  ImportantRule:
+    enabled: false
+
+  DuplicateProperty:
+    enabled: false
+
+  Comment:
+    enabled: true
+
+  EmptyLineBetweenBlocks:
+    enabled: true
+
+  StringQuotes:
+    enabled: true
+
+  LeadingZero:
+    style: include_zero
+
+  MergeableSelector:
+    enabled: true
+
+  PropertySortOrder:
+    enabled: false
+
+  NameFormat:
+    enabled: true
+
+  SelectorDepth:
+    enabled: true
+
+  SelectorFormat:
+    enabled: hyphenated_lowercase
+
+  IdSelector:
+    enabled: true
