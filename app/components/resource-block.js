@@ -71,6 +71,14 @@ export default Ember.Component.extend({
   actions: {
     toggleDetails() {
       this.toggleProperty('showDetails');
+    },
+
+    bookRoom(minutes) {
+      // send request to book room
+    },
+
+    cancelRoom() {
+      // send request to cancel room
     }
   }
 });
