@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   classNameBindings: ['isBooked:is-booked'],
 
   isBooked: false,
+  showDetails: false,
   panel: 'info', // "info" or "counter"
 
   didInsertElement() {
@@ -65,5 +66,11 @@ export default Ember.Component.extend({
 
   translateNode(swipeNode, n = 0) {
     swipeNode.css('transform', `translateX(${Math.floor(n)}%)`);
+  },
+
+  actions: {
+    toggleDetails() {
+      this.toggleProperty('showDetails');
+    }
   }
 });
