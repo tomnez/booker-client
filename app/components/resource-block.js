@@ -9,7 +9,7 @@ export default Ember.Component.extend({
   panel: 'info', // "info" or "counter"
 
   didInsertElement() {
-    let [swipeNode] = this.$();
+    let swipeNode = this.$().get(0);
     let hammertime = new Hammer(swipeNode);
 
     hammertime.on('panend panleft panright', (e) => {
@@ -31,7 +31,7 @@ export default Ember.Component.extend({
           return;
         }
 
-        percent = (100/roomWidth) * dx;
+        percent = (100 / roomWidth) * dx;
         this.translateNode(swipeNode, percent);
         break;
       case 'panright':
@@ -39,11 +39,11 @@ export default Ember.Component.extend({
           return;
         }
 
-        percent = (-50 + ((100/roomWidth) * dx));
+        percent = (-50 + ((100 / roomWidth) * dx));
         this.translateNode(swipeNode, percent);
         break;
       default: // on 'panend'
-        percent = (100/roomWidth) * dx;
+        percent = (100 / roomWidth) * dx;
 
         // if swiped more than halfway in either direction
         if (Math.abs(dx) > (roomWidth / 4)) {
