@@ -1,27 +1,7 @@
-<div class="resource-minute-counter">
-  {{#unless isBooked}}
-    <div class="buttons-row">
-      <span class="counter-btn-container">
-        <button class="counter-btn btn-less-minutes icon-minus disabled"></button>
-      </span>
-      <span class="counter-btn-container">
-        <div class="current-minutes-display"><span class="large-minutes-display">5</span></div>
-      </span>
-      <span class="counter-btn-container">
-        <button class="counter-btn btn-more-minutes icon-plus"></button>
-      </span>
-    </div>
-    <div class="message-row">tap center circle to book for <span class="minutes-to-book">5</span> minutes.</div>
-  {{else}}
-    <div class="resource-cancel">
-      <button class="resource-cancel-button">Cancel Event</button>
-      <div class="message-row">You must be the owner to cancel (duh)</div>
-    </div>
-  {{/unless}}
-</div>
+{{minute-counter isBooked=isBooked bookRoom=(action 'bookRoom') cancelRoom=(action 'cancelRoom')}}
 
 <div class="resource-info-all-container">
-  <span class="icon-list2 resource-icon-details" {{action "toggleDetails"}}></span>
+  <button class="icon-list2 resource-icon-details" {{action "toggleDetails"}}></button>
   <div class="resource-label-container">
     <h1>Room 1</h1>
   </div>

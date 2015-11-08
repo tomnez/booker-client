@@ -1,0 +1,27 @@
+{{#unless isBooked}}
+  <div class="buttons-row">
+    <span class="counter-btn-container">
+      <button class="counter-btn btn-less-minutes icon-minus" disabled={{decButtonDisabled}} {{action "decMinutes"}}></button>
+    </span>
+    <span class="counter-btn-container">
+      <button class="counter-btn current-minutes-display" disabled={{decButtonDisabled}} {{action "bookRoom" minutes}}>
+        <span class="large-minutes-display">{{minutes}}</span>
+      </button>
+    </span>
+    <span class="counter-btn-container">
+      <button class="counter-btn btn-more-minutes icon-plus" {{action "incMinutes"}}></button>
+    </span>
+  </div>
+  <div class="message-row">
+    {{#if decButtonDisabled}}
+      Set minutes using the +/- buttons.
+    {{else}}
+      Tap center circle to book for <span class="minutes-to-book">{{minutes}}</span> minutes.
+    {{/if}}
+  </div>
+{{else}}
+  <div class="resource-cancel">
+    <button class="resource-cancel-button" {{action "cancelRoom"}}>Cancel Event</button>
+    <div class="message-row">You must be the owner to cancel (duh)</div>
+  </div>
+{{/unless}}
