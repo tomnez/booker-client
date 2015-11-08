@@ -71,7 +71,6 @@ $resource-block-padding: 15px 30px;
 .resource-details-container {
   padding: $resource-block-padding;
   background: $aqua-dark;
-  display: none;
 
   .is-booked & {
     background: $red-dark;
