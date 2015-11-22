@@ -1,1 +1,9 @@
+<div>
+  {{#if session.isAuthenticated}}
+   <a {{ action 'invalidateSession' }}>Logout</a>
+  {{else}}
+   <a {{ action 'createSession' }}>Login</a>
+  {{/if}}
+</div>
+
 {{outlet}}

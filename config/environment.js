@@ -4,8 +4,18 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'booker-client',
     environment: environment,
+    apiHost: 'http://localhost:4500/api/',
     baseURL: '/',
     locationType: 'auto',
+    torii: {
+      providers: {
+        'google-oauth2': {
+          apiKey: '405429344171-3graio22tnaht89ac52ftkb326p8cf0p.apps.googleusercontent.com',
+          redirectUri: 'http://localhost:4200/resources',
+          scope: 'https://www.googleapis.com/auth/calendar'
+        },
+      }
+    },
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
@@ -19,11 +29,18 @@ module.exports = function(environment) {
     }
   };
 
+  ENV['ember-simple-auth'] = {
+    authenticationRoute: 'application',
+    routeAfterAuthentication: 'resources',
+    routeIfAlreadyAuthenticated: 'resources'
+  };
+
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
-    'script-src': "'self'",
+    'script-src': "'self' https://apis.google.com",
+    'frame-src': "'self' https://accounts.google.com",
     'font-src': "'self' https://fonts.googleapis.com https://fonts.gstatic.com",
-    'connect-src': "'self'",
+    'connect-src': "'self' http://localhost:4500 https://accounts.google.com/o/oauth2/auth",
     'img-src': "'self'",
     'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com https://fonts.gstatic.com",
     'media-src': "'self'"
@@ -34,7 +51,7 @@ module.exports = function(environment) {
   // 'font-src': "'self' http://fonts.gstatic.com", // Allow fonts to be loaded from http://fonts.gstatic.com
   // 'connect-src': "'self' https://api.mixpanel.com http://custom-api.local", // Allow data (ajax/websocket) from api.mixpanel.com and custom-api.local
   // 'img-src': "'self'",
-  // 'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com 
+  // 'style-src': "'self' 'unsafe-inline' http://fonts.googleapis.com", // Allow inline styles and loaded CSS from http://fonts.googleapis.com
   // 'media-src': "'self'"
 
   if (environment === 'development') {
