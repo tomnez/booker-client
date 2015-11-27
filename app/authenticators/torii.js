@@ -8,8 +8,10 @@ const { service } = Ember.inject;
 
 export default Torii.extend({
   torii: service('torii'),
+  session: service(),
 
   serverTokenEndpoint: `${ENV.apiHost}token`,
+  serverRevokeTokenEndpoint: `${ENV.apiHost}revoke`,
 
   authenticate() {
     return new RSVP.Promise((resolve, reject) => {
@@ -26,6 +28,23 @@ export default Torii.extend({
             // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
             provider: data.provider
           });
+        }, reject);
+      }, reject);
+    });
+  },
+
+  invalidate() {
+    let tokenToClear = this.get('session.data.authenticated.access_token');
+
+    return new RSVP.Promise((resolve, reject) => {
+      this._super(...arguments).then(() => {
+        raw({
+          url: this.get('serverRevokeTokenEndpoint'),
+          type: 'POST',
+          dataType: 'json',
+          data: { 'token': tokenToClear }
+        }).then((response) => {
+          resolve();
         }, reject);
       }, reject);
     });
