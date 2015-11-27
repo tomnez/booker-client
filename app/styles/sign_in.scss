@@ -1,0 +1,24 @@
+@import 'colors';
+
+.sign-in-container {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: #dbdbdb;
+}
+
+.btn-sign-in,
+.btn-sign-out {
+  display: inline-block;
+  background: $red-base;
+  padding: 10px 20px;
+  margin: auto;
+}
+
+.btn-sign-out {
+  width: 100%;
+  padding: 20px 0;
+}
