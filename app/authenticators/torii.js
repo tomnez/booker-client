@@ -43,7 +43,7 @@ export default Torii.extend({
           type: 'POST',
           dataType: 'json',
           data: { 'token': tokenToClear }
-        }).then((response) => {
+        }).then(() => {
           resolve();
         }, reject);
       }, reject);
