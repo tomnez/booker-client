@@ -48,5 +48,14 @@ export default Torii.extend({
         }, reject);
       }, reject);
     });
+  },
+
+  restore(data) {
+    let resolveData = data || {};
+    // https://github.com/simplabs/ember-simple-auth/issues/345#issuecomment-69460044
+    this._provider = resolveData.provider;
+    return new RSVP.Promise(function(resolve) {
+      resolve(resolveData);
+    });
   }
 });
