@@ -10,7 +10,7 @@ module.exports = function(environment) {
     torii: {
       providers: {
         'google-oauth2': {
-          apiKey: '405429344171-3graio22tnaht89ac52ftkb326p8cf0p.apps.googleusercontent.com',
+          apiKey: process.env.GOOGLE_API_KEY,
           redirectUri: 'http://localhost:4200/resources',
           scope: 'https://www.googleapis.com/auth/calendar'
         },
