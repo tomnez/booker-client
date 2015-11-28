@@ -12,7 +12,7 @@ module.exports = function(environment) {
         'google-oauth2': {
           apiKey: process.env.GOOGLE_API_KEY,
           redirectUri: 'http://localhost:4200/resources',
-          scope: 'https://www.googleapis.com/auth/calendar'
+          scope: 'https://www.googleapis.com/auth/calendar https://www.googleapis.com/auth/userinfo.profile'
         },
       }
     },
