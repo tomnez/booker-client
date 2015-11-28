@@ -9,6 +9,7 @@ const { service } = Ember.inject;
 export default Torii.extend({
   torii: service('torii'),
   session: service(),
+  store: service(),
 
   serverTokenEndpoint: `${ENV.apiHost}token`,
   serverRevokeTokenEndpoint: `${ENV.apiHost}revoke`,
@@ -22,9 +23,11 @@ export default Torii.extend({
           dataType: 'json',
           data: { 'token': data.authorizationCode }
         }).then((response) => {
+          this.get('store').push(response.user);
+
           resolve({
             // jscs:disable requireCamelCaseOrUpperCaseIdentifiers
-            access_token: response.access_token,
+            access_token: response.auth.access_token,
             // jscs:enable requireCamelCaseOrUpperCaseIdentifiers
             provider: data.provider
           });
