@@ -7,6 +7,10 @@ module.exports = function(defaults) {
       includePaths: [
         'app/styles'
       ]
+    },
+    dotEnv: {
+      clientAllowedKeys: ['GOOGLE_API_KEY'],
+      path: 'keys/.env'
     }
   });
 
