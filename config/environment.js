@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'booker-client',
     environment: environment,
-    apiHost: 'http://localhost:4500/api/',
+    apiHost: 'http://localhost:4500/api',
     baseURL: '/',
     locationType: 'auto',
     torii: {
