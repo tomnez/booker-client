@@ -11,8 +11,8 @@ export default Torii.extend({
   session: service(),
   store: service(),
 
-  serverTokenEndpoint: `${ENV.apiHost}token`,
-  serverRevokeTokenEndpoint: `${ENV.apiHost}revoke`,
+  serverTokenEndpoint: `${ENV.apiHost}/token`,
+  serverRevokeTokenEndpoint: `${ENV.apiHost}/revoke`,
 
   authenticate() {
     return new RSVP.Promise((resolve, reject) => {
