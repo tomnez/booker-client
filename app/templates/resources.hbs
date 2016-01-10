@@ -1,14 +1,8 @@
 <section>
   <ul class="resource-list">
-    {{resource-block}}
-    {{resource-block isBooked=true}}
-    {{resource-block}}
-    {{resource-block}}
-    {{resource-block}}
-    {{resource-block}}
-    {{resource-block}}
-    {{resource-block}}
-    {{resource-block}}
+    {{#each model as |resource|}}
+      {{resource-block model=resource}}
+    {{/each}}
   </ul>
 </section>
 <button class="btn-sign-out" {{action "invalidateSession"}}>Sign out</button>

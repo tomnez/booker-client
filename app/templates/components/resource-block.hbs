@@ -3,7 +3,7 @@
 <div class="resource-info-all-container">
   <button class="icon-list2 resource-icon-details" {{action "toggleDetails"}}></button>
   <div class="resource-label-container">
-    <h1>Room 1</h1>
+    <h1 class="resource-label-header">{{model.name}}</h1>
   </div>
   {{#liquid-if showDetails class="resource-details-transition"}}
     <div class="resource-details-container">
