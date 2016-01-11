@@ -7,6 +7,8 @@ let Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('resources');
+  this.route('protected');
+  this.route('login');
 });
 
 export default Router;

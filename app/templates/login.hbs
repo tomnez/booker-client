@@ -1,0 +1,5 @@
+{{#unless session.isAuthenticated}}
+  <div class="sign-in-container">
+    <button class="btn-sign-in" {{action "createSession"}}>Sign in with Google</button>
+  </div>
+{{/unless}}

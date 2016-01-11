@@ -30,7 +30,7 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth'] = {
-    authenticationRoute: 'application',
+    authenticationRoute: 'login',
     routeAfterAuthentication: 'resources',
     routeIfAlreadyAuthenticated: 'resources'
   };
@@ -72,6 +72,10 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['ember-simple-auth'] = {
+      store: 'simple-auth-session-store:ephemeral'
+    };
   }
 
   if (environment === 'production') {

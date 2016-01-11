@@ -7,6 +7,10 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   session: service(),
   torii: service(),
 
+  beforeModel() {
+    this.transitionTo('login');
+  },
+
   actions: {
     createSession() {
       this.get('session').authenticate('authenticator:torii', 'google-oauth2').then(() => {}, (error) => {
