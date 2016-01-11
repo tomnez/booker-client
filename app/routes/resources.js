@@ -8,7 +8,7 @@ const { Promise } = Ember.RSVP;
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   session: service(),
 
-  model(params) {
+  model() {
     let user = this.store.peekAll('user').get('firstObject');
 
     if (!user) {

@@ -73,7 +73,7 @@ export default Ember.Component.extend({
       this.toggleProperty('showDetails');
     },
 
-    bookRoom(minutes) {
+    bookRoom() {
       // send request to book room
     },
 
