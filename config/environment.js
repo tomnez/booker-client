@@ -29,12 +29,6 @@ module.exports = function(environment) {
     }
   };
 
-  ENV['ember-simple-auth'] = {
-    authenticationRoute: 'login',
-    routeAfterAuthentication: 'resources',
-    routeIfAlreadyAuthenticated: 'resources'
-  };
-
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
     'script-src': "'self' https://apis.google.com 'unsafe-inline'",

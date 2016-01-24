@@ -1,9 +1,8 @@
 import Ember from 'ember';
-import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 const { service } = Ember.inject;
 
-export default Ember.Route.extend(ApplicationRouteMixin, {
+export default Ember.Route.extend({
   session: service(),
   torii: service(),
 
@@ -11,16 +10,28 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
     this.transitionTo('login');
   },
 
+  authenticationSucceeded() {
+    this.transitionTo('resources')
+  },
+
+  invalidationSucceeded() {
+    this.transitionTo('login');
+  },
+
   actions: {
     createSession() {
-      this.get('session').authenticate('authenticator:torii', 'google-oauth2').then(() => {}, (error) => {
+      this.get('session').authenticate('authenticator:torii', 'google-oauth2').then(() => {
+        this.authenticationSucceeded();
+      }, (error) => {
         // TODO: handle error
         console.log(error);
       });
     },
 
     invalidateSession() {
-      this.get('session').invalidate();
+      this.get('session').invalidate().then(() => {
+        this.invalidationSucceeded();
+      });
     }
   }
 });
