@@ -37,7 +37,7 @@ module.exports = function(environment) {
 
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
-    'script-src': "'self' https://apis.google.com",
+    'script-src': "'self' https://apis.google.com 'unsafe-inline'",
     'frame-src': "'self' https://accounts.google.com",
     'font-src': "'self' https://fonts.googleapis.com https://fonts.gstatic.com",
     'connect-src': "'self' http://localhost:4500 https://accounts.google.com/o/oauth2/auth",
