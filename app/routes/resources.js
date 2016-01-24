@@ -8,7 +8,7 @@ const { Promise } = Ember.RSVP;
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   session: service(),
 
-  model(params) {
+  model() {
     let user = this.store.peekAll('user').get('firstObject');
 
     if (!user) {
@@ -31,8 +31,10 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
           'Authorization': `Bearer ${this.get('session').get('data.authenticated.access_token')}`
         }
       }).then((response) => {
-        this.get('store').push(response.user);
-        resolve(response.user.id);
+        Ember.run.next(this, ()=> {
+          this.get('store').push(response.user);
+          resolve(response.user.id);
+        });
       }, reject);
     });
   }

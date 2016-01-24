@@ -30,14 +30,14 @@ module.exports = function(environment) {
   };
 
   ENV['ember-simple-auth'] = {
-    authenticationRoute: 'application',
+    authenticationRoute: 'login',
     routeAfterAuthentication: 'resources',
     routeIfAlreadyAuthenticated: 'resources'
   };
 
   ENV.contentSecurityPolicy = {
     'default-src': "'none'",
-    'script-src': "'self' https://apis.google.com",
+    'script-src': "'self' https://apis.google.com 'unsafe-inline'",
     'frame-src': "'self' https://accounts.google.com",
     'font-src': "'self' https://fonts.googleapis.com https://fonts.gstatic.com",
     'connect-src': "'self' http://localhost:4500 https://accounts.google.com/o/oauth2/auth",
@@ -66,12 +66,17 @@ module.exports = function(environment) {
     // Testem prefers this...
     ENV.baseURL = '/';
     ENV.locationType = 'none';
+    ENV.apiHost = '/api';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
+
+    ENV['ember-simple-auth'] = {
+      store: 'simple-auth-session-store:ephemeral'
+    };
   }
 
   if (environment === 'production') {
