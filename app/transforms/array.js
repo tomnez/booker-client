@@ -9,7 +9,7 @@ import DS from 'ember-data';
 // so instead we use an array attribute type.
 
 export default DS.Transform.extend({
-  deserialize (value) {
+  deserialize(value) {
     if (Ember.isArray(value)) {
       return Ember.A(value);
     } else {
@@ -17,7 +17,7 @@ export default DS.Transform.extend({
     }
   },
 
-  serialize (value) {
+  serialize(value) {
     if (Ember.isArray(value)) {
       return Ember.A(value);
     } else {
