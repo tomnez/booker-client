@@ -5,7 +5,6 @@ export default Ember.Component.extend({
   classNames: ['resource-block-item'],
   classNameBindings: ['isBooked:is-booked'],
 
-  isBooked: false,
   showDetails: false,
   panel: 'info', // "info" or "counter"
 
@@ -17,6 +16,10 @@ export default Ember.Component.extend({
       this.resourceSwiping(e);
     });
   },
+
+  isBooked: Ember.computed('model.busyNow', function () {
+    return this.get('model.busyNow');
+  }),
 
   resourceSwiping(e) {
     let dx = e.deltaX;
