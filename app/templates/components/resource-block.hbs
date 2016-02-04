@@ -15,7 +15,9 @@
     </div>
   {{/liquid-if}}
   <div class="resource-basic-info-container">
-    <span class="until-time">Booked until 4:30pm</span>
-    <span class="minute-counter">(23 minutes)</span>
+    <span class="until-time">{{freeBusyMessage}}</span>
+    {{#if timeNote}}
+      <span class="minute-counter">({{timeNote}})</span>
+    {{/if}}
   </div>
 </div>

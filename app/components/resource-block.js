@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
   tagName: 'li',
@@ -15,11 +16,43 @@ export default Ember.Component.extend({
     hammertime.on('panend panleft panright', (e) => {
       this.resourceSwiping(e);
     });
+
+    this.setFreeBusyMessage();
   },
 
-  isBooked: Ember.computed('model.busyNow', function () {
+  isBooked: Ember.computed('model.busyNow', function() {
     return this.get('model.busyNow');
   }),
+
+  setFreeBusyMessage () {
+    var isBookedNow = this.get('isBooked');
+    var schedule = this.get('model.schedule');
+    var untilTime;
+    var difference;
+    var time;
+    var message;
+
+    if (isBookedNow) {
+
+      time = moment(schedule[0].end);
+      untilTime = time.format('h:mma');
+      message = `Booked until ${untilTime}`;
+
+    } else if (!isBookedNow && schedule.length) {
+
+      time = moment(schedule[0].start);
+      untilTime = time.format('h:mma');
+      message = `Free until ${untilTime}`;
+
+    } else {
+      message = `Free all day`;
+    }
+
+    difference = time ? time.from(moment()) : null;
+
+    this.set('timeNote', difference);
+    this.set('freeBusyMessage', message);
+  },
 
   resourceSwiping(e) {
     let dx = e.deltaX;
