@@ -8,13 +8,20 @@ const { Promise } = Ember.RSVP;
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   session: service(),
 
-  model() {
+  model(params, transition) {
     let user = this.store.peekAll('user').get('firstObject');
 
     if (!user) {
       return this.getUser().then((id) => {
         let user = this.store.peekRecord('user', id);
         return user.get('resources');
+      }, (errorMessage) => {
+        // TODO: flash error message
+        transition.abort();
+        // TODO: why LocalStorageStore won't import
+        localStorage.removeItem('ember_simple_auth:session');
+
+        this.transitionTo('login');
       });
     } else {
       return user.get('resources');
@@ -31,10 +38,14 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
           'Authorization': `Bearer ${this.get('session').get('data.authenticated.access_token')}`
         }
       }).then((response) => {
-        Ember.run.next(this, ()=> {
-          this.get('store').push(response.user);
-          resolve(response.user.id);
-        });
+        if (response.errors) {
+          reject(response.message);
+        } else {
+          Ember.run.next(this, ()=> {
+            this.get('store').push(response.user);
+            resolve(response.user.id);
+          });
+        }
       }, reject);
     });
   }
