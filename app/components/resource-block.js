@@ -16,21 +16,19 @@ export default Ember.Component.extend({
     hammertime.on('panend panleft panright', (e) => {
       this.resourceSwiping(e);
     });
-
-    this.setFreeBusyMessage();
   },
 
   isBooked: Ember.computed('model.busyNow', function() {
     return this.get('model.busyNow');
   }),
 
-  setFreeBusyMessage () {
-    var isBookedNow = this.get('isBooked');
-    var schedule = this.get('model.schedule');
-    var untilTime;
-    var difference;
-    var time;
-    var message;
+  didReceiveAttrs() {
+    let isBookedNow = this.get('isBooked');
+    let schedule = this.get('model.schedule');
+    let untilTime;
+    let difference;
+    let time;
+    let message;
 
     if (isBookedNow) {
 
