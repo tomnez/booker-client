@@ -11,7 +11,7 @@ export default Ember.Route.extend({
   },
 
   authenticationSucceeded() {
-    this.transitionTo('resources')
+    this.transitionTo('resources');
   },
 
   invalidationSucceeded() {

@@ -30,7 +30,9 @@ test('List resources', function(assert) {
             type: 'resource',
             attributes: {
               name: 'Monster Mash Meeting Room',
-              access: 'owner'
+              access: 'owner',
+              'busy-now': false,
+              schedule: []
             }
           },
           {
@@ -38,7 +40,9 @@ test('List resources', function(assert) {
             type: 'resource',
             attributes: {
               name: 'Meat Space',
-              access: 'owner'
+              access: 'owner',
+              'busy-now': false,
+              schedule: []
             }
           }
         ]
