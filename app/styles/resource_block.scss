@@ -50,6 +50,9 @@ $resource-block-padding: 15px 30px;
   .is-booked & {
     background: $red-faded;
   }
+  &.disabled {
+    opacity: 0.25;
+  }
 }
 
 // add this class to other icons
