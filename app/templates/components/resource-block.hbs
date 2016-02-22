@@ -1,17 +1,17 @@
 {{minute-counter isBooked=isBooked bookRoom=(action 'bookRoom') cancelRoom=(action 'cancelRoom')}}
 
 <div class="resource-info-all-container">
-  <button class="icon-list2 resource-icon-details" {{action "toggleDetails"}}></button>
+  <button disabled={{disableDetails}} class="{{if loadingDetails 'icon-loading' 'icon-list2'}} resource-icon-details {{if disableDetails 'disabled'}}" {{action "toggleDetails"}}></button>
   <div class="resource-label-container">
     <h1 class="resource-label-header">{{model.name}}</h1>
   </div>
   {{#liquid-if showDetails class="resource-details-transition"}}
     <div class="resource-details-container">
-      <h2 class="resource-details-header">NEXT EVENT:</h2>
+      <h2 class="resource-details-header">{{#if model.busyNow}}CURRENT{{else}}NEXT{{/if}} EVENT:</h2>
       <p class="resource-details-booked-by">
-        Booked by <strong>Tom Netzband</strong> for <strong>Design Review</strong> from <strong>2:00pm - 3:30pm</strong>.
+        Booked by <strong>{{details.creator}}</strong> for <strong>{{details.title}}</strong> from <strong>{{details.start}} - {{details.end}}</strong>.
       </p>
-      <span class="resource-details-and-then">Then 4:30pm - 4:45pm by Andrew Cox</span>
+      <!-- <span class="resource-details-and-then">Then 4:30pm - 4:45pm by Andrew Cox</span> -->
     </div>
   {{/liquid-if}}
   <div class="resource-basic-info-container">
