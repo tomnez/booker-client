@@ -29,6 +29,10 @@ export default Ember.Component.extend({
     return this.get('model.busyNow');
   }),
 
+  disableDetails: Ember.computed('model.schedule.[]', function() {
+    return !this.get('model.schedule.length');
+  }),
+
   didReceiveAttrs() {
     let isBookedNow = this.get('isBooked');
     let schedule = this.get('model.schedule');
@@ -57,7 +61,6 @@ export default Ember.Component.extend({
 
     this.set('timeNote', difference);
     this.set('freeBusyMessage', message);
-    this.set('disableDetails', !schedule.length);
   },
 
   resourceSwiping(e) {
@@ -135,7 +138,7 @@ export default Ember.Component.extend({
           Authorization: `Bearer ${session.get('data.authenticated.access_token')}`
         }
       }).then((response) => {
-        var resourceDetails = response.resourceEvent;
+        let resourceDetails = response.resourceEvent;
 
         this.set('details', resourceDetails);
         this.set('loadingDetails', false);

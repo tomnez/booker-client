@@ -7,9 +7,10 @@ moduleForComponent('resource-block', 'Integration | Component | resource block',
 });
 
 const resource = Ember.Object.create({
+  id: 1,
   name: 'Meeting Room',
   access: 'owner',
-  schedule: [],
+  schedule: [{ start: '2016-02-21T22:07:27Z', end: '2016-02-21T23:30:00Z' }],
   busyNow: false
 });
 
@@ -20,19 +21,4 @@ test('it renders', function(assert) {
   this.render(hbs`{{resource-block model=resource}}`);
 
   assert.equal(this.$('.resource-info-all-container').length, 1, 'resource block component renders');
-});
-
-test('clicking the details icon opens/closes the details panel', function(assert) {
-  assert.expect(2);
-
-  this.set('resource', resource);
-  this.render(hbs`{{resource-block model=resource}}`);
-
-  this.$('.resource-icon-details').click();
-
-  assert.equal(this.$('.resource-details-container').length, 1, 'resource details panel is shown');
-
-  this.$('.resource-icon-details').click();
-
-  assert.equal(this.$('.resource-details-container').length, 0, 'resource details panel is hidden');
 });
