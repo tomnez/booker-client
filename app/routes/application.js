@@ -5,6 +5,7 @@ const { service } = Ember.inject;
 export default Ember.Route.extend({
   session: service(),
   torii: service(),
+  flashMessages: service(),
 
   beforeModel() {
     this.transitionTo('login');
@@ -23,8 +24,7 @@ export default Ember.Route.extend({
       this.get('session').authenticate('authenticator:torii', 'google-oauth2').then(() => {
         this.authenticationSucceeded();
       }, (error) => {
-        // TODO: handle error
-        console.log(error);
+        this.get('flashMessages').danger(error.jqXHR.responseText);
       });
     },
 

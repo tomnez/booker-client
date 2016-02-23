@@ -7,6 +7,7 @@ const { Promise } = Ember.RSVP;
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   session: service(),
+  flashMessages: service(),
 
   model(params, transition) {
     let user = this.store.peekAll('user').get('firstObject');
@@ -15,8 +16,9 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       return this.getUser().then((id) => {
         let user = this.store.peekRecord('user', id);
         return user.get('resources');
-      }, (errorMessage) => {
-        // TODO: flash error message
+      }, (error) => {
+        this.get('flashMessages').danger(error.responseText);
+
         transition.abort();
         // TODO: why LocalStorageStore won't import
         localStorage.removeItem('ember_simple_auth:session');
